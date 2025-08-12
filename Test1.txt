@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>South India Travel Explorer</title>
+  <style>
+    :root{
+      --emerald:#1FAB89;
+      --gold:#FFB400;
+      --cream:#FFF8E7;
+      --teal:#004D40;
+      --card-shadow: 0 6px 18px rgba(12,12,12,0.08);
+      --max-width:1100px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:var(--cream);
+      color:#1f2d2d;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+    }
+
+    header{
+      background: linear-gradient(90deg,var(--emerald),#2bb3a2);
+      color:white;
+      padding:18px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    }
+    header h1{
+      margin:0;
+      font-family: "Playfair Display", serif;
+      letter-spacing: .4px;
+      font-size:20px;
+    }
+    header nav a{
+      color:white;
+      text-decoration:none;
+      margin-left:18px;
+      font-weight:600;
+      opacity:0.95;
+    }
+
+    .container{
+      max-width:var(--max-width);
+      margin:28px auto;
+      padding:0 18px;
+    }
+
+    /* hero */
+    .hero{
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:24px;
+      align-items:center;
+      margin-bottom:28px;
+    }
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));
+      border-radius:12px;
+      padding:22px;
+      box-shadow:var(--card-shadow);
+    }
+    .hero h2{
+      margin:0 0 8px 0;
+      font-family:"Playfair Display", serif;
+      font-size:28px;
+    }
+    .hero p{margin:0 0 14px 0;color:#274343}
+
+    .cta-row{display:flex;gap:12px;align-items:center}
+    .btn{
+      background:var(--teal);
+      color:white;
+      border:none;
+      padding:10px 14px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:600;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.06);
+    }
+    .btn.secondary{background:transparent;color:var(--teal);border:2px solid rgba(0,0,0,0.06);}
+
+    .hero-side{
+      background:url('https://images.unsplash.com/photo-1542038784456-49b35bb3d7b6?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=') center/cover no-repeat;
+      min-height:220px;
+      border-radius:12px;
+      box-shadow:var(--card-shadow);
+    }
+
+    /* state grid */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:18px;
+    }
+    .card{
+      background:white;
+      border-radius:10px;
+      overflow:hidden;
+      box-shadow:var(--card-shadow);
+      cursor:pointer;
+      transition:transform .22s ease, box-shadow .22s ease;
+      display:flex;
+      flex-direction:column;
+    }
+    .card:hover{ transform:translateY(-6px); box-shadow:0 18px 40px rgba(12,12,12,0.12)}
+    .card .img{
+      height:150px;
+      background-size:cover;
+      background-position:center;
+    }
+    .card .body{
+      padding:12px 14px 16px 14px;
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+    .card h3{ margin:0 0 8px 0; font-size:16px; font-weight:700;}
+    .card p{ margin:0; color:#556; font-size:14px}
+
+    /* detail page */
+    .detail-banner{
+      width:100%;
+      height:360px;
+      border-radius:10px;
+      background-size:cover;
+      background-position:center;
+      box-shadow:var(--card-shadow);
+    }
+    .detail-info{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: 1fr 320px;
+      gap:18px;
+      align-items:start;
+    }
+    .detail-text{
+      background:white;padding:18px;border-radius:10px;box-shadow:var(--card-shadow);
+    }
+    .meta-box{
+      background:white;padding:14px;border-radius:10px;box-shadow:var(--card-shadow);
+    }
+    .meta-box h4{ margin:0 0 8px 0; font-size:14px}
+    ul.checks{ padding-left:18px; margin:6px 0 0 0 }
+    ul.checks li{ margin-bottom:6px }
+
+    /* gallery */
+    .gallery{
+      margin-top:12px;
+      display:flex;
+      gap:10px;
+      overflow:auto;
+    }
+    .gallery img{ height:90px; border-radius:8px; object-fit:cover; }
+
+    /* breadcrumbs */
+    .crumbs{ margin:12px 0; color:#2b4; font-size:14px}
+    .crumbs a{ color:var(--teal); text-decoration:none; margin-right:8px }
+
+    footer{
+      margin-top:40px;
+      background:var(--teal);
+      color:white;
+      text-align:center;
+      padding:16px 12px;
+      border-top-left-radius:8px;
+      border-top-right-radius:8px;
+    }
+
+    /* responsive */
+    @media(max-width:900px){
+      .hero{ grid-template-columns:1fr; }
+      .detail-info{ grid-template-columns:1fr; }
+      .hero-side{ min-height:160px }
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>South India Travel Explorer</h1>
+    <nav>
+      <a href="#home" id="nav-home">Home</a>
+    </nav>
+  </header>
+
+  <main class="container" id="app">
+    <!-- dynamic content will render here -->
+  </main>
+
+  <footer>
+    © 2025 South India Travel Explorer — Built with ❤️ (Fictional)
+  </footer>
+
+  <script>
+    /***** DATA: fictional, south-india inspired destinations *****/
+    const DATA = {
+      "karnataka": {
+        name: "Karnataka",
+        hero: "https://images.unsplash.com/photo-1508261301161-4e9a6c9e5f99?q=80&w=1500&auto=format&fit=crop&s=",
+        spots: [
+          {
+            id: "coorg",
+            name: "Coorg Vale",
+            short: "Coffee hills, misty mornings & waterfalls.",
+            image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1600&auto=format&fit=crop&s=",
+            gallery: [
+              "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop&s=",
+              "https://images.unsplash.com/photo-1533777324565-a040eb52fac2?q=80&w=1200&auto=format&fit=crop&s="
+            ],
+            description: "Coorg Vale is a fictional interpretation of Karnataka's highland beauty — coffee estates, rolling green slopes and charming homestays.",
+            best_time: "October — March",
+            things_to_do: ["Coffee plantation walk", "Waterfall picnic", "Trekking short trails"],
+            how_to_reach: "Nearest city: Mysore (120 km). Road access is scenic."
+          },
+          {
+            id: "hampi",
+            name: "Hampi Ruins",
+            short: "Ancient ruins & giant boulders.",
+            image: "https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?q=80&w=1600&auto=format&fit=crop&s=",
+            gallery: [
+              "https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?q=80&w=1200&auto=format&fit=crop&s=",
+              "https://images.unsplash.com/photo-1526779259212-7d3d3c2f1d0a?q=80&w=1200&auto=format&fit=crop&s="
+            ],
+            description: "Walk among the ruins and bouldered landscape; Hampi Ruins captures the timeless monumentality and sunset vistas.",
+            best_time: "October — February",
+            things_to_do: ["Temple walks", "Sunset viewpoint", "Coracle rides"],
+            how_to_reach: "Nearest rail: Hospet. Bus services available from nearby towns."
+          }
+        ]
+      },
+      "kerala": {
+        name: "Kerala",
+        hero: "https://images.unsplash.com/photo-1505765055364-7f1b4e3a78d8?q=80&w=1500&auto=format&fit=crop&s=",
+        spots: [
+          {
+            id: "munnar",
+            name: "Munnar Mists",
+            short: "Tea terraces & cool hill air.",
+            image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop&s=",
+            gallery: [
+              "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop&s=",
+              "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop&s="
+            ],
+            description: "Munnar Mists is our aesthetic take on Kerala's hill station magic — tea gardens that roll away to the horizon.",
+            best_time: "September — March",
+            things_to_do: ["Tea estate tours", "Scenic viewpoints", "Local spice market"],
+            how_to_reach: "Nearest airport: Kochi (110 km). Regular road connections."
+          },
+          {
+            id: "backwaters",
+            name: "Thulasi Backwaters",
+            short: "Houseboats, lagoons & lotus blooms.",
+            image: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=1600&auto=format&fit=crop&s=",
+            gallery: [
+              "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=1200&auto=format&fit=crop&s=",
+              "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1200&auto=format&fit=crop&s="
+            ],
+            description: "Drift in a traditional houseboat, watch fishermen cast nets and enjoy the peaceful lagoon life.",
+            best_time: "October — February",
+            things_to_do: ["Houseboat overnight", "Village cycling", "Bird watching"],
+            how_to_reach: "Nearest city: Kochi; road transfers available."
+          }
+        ]
+      },
+      "tamilnadu": {
+        name: "Tamil Nadu",
+        hero: "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c6?q=80&w=1500&auto=format&fit=crop&s=",
+        spots: [
+          {
+            id: "ooty",
+            name: "Ooty Meadows",
+            short: "Toy trains & emerald hills.",
+            image: "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?q=80&w=1600&auto=format&fit=crop&s=",
+            gallery: [
+              "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?q=80&w=1200&auto=format&fit=crop&s=",
+              "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1200&auto=format&fit=crop&s="
+            ],
+            description: "Ooty Meadows offers classic Nilgiri hill charm — toy trains, botanical gardens and winding highways.",
+            best_time: "October — March",
+            things_to_do: ["Toy train ride", "Botanical garden", "Tea tasting"],
+            how_to_reach: "Nearest rail: Ooty (toy train from Mettupalayam). Road best for scenic drive."
+          },
+          {
+            id: "mahabalipuram",
+            name: "Mahabalipuram Shore",
+            short: "Rock temples & coastal sunsets.",
+            image: "https://images.unsplash.com/photo-1567469732095-711614a2fe37?q=80&w=1600&auto=format&fit=crop&s=",
+            gallery: [
+              "https://images.unsplash.com/photo-1567469732095-711614a2fe37?q=80&w=1200&auto=format&fit=crop&s=",
+              "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?q=80&w=1200&auto=format&fit=crop&s="
+            ],
+            description: "Coastal sculptures meet golden sands — perfect for sunrise walks and ancient temple exploration.",
+            best_time: "November — February",
+            things_to_do: ["Shore temple visit", "Sculpture trail", "Seafood markets"],
+            how_to_reach: "Chennai is the nearest major city; good road connections."
+          }
+        ]
+      },
+      "andhra": {
+        name: "Andhra Pradesh",
+        hero: "https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1500&auto=format&fit=crop&s=",
+        spots: [
+          {
+            id: "araku",
+            name: "Araku Valley",
+            short: "Coffee valleys & tribal art.",
+            image: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1600&auto=format&fit=crop&s=",
+            gallery: [
+              "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1200&auto=format&fit=crop&s=",
+              "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1200&auto=format&fit=crop&s="
+            ],
+            description: "Araku Valley offers cool hillscapes, vibrant local culture and scenic train journeys.",
+            best_time: "October — March",
+            things_to_do: ["Valley train ride", "Coffee tasting", "Handicraft shopping"],
+            how_to_reach: "Nearest city: Visakhapatnam; scenic drives available."
+          },
+          {
+            id: "tirupati",
+            name: "Tirupati Hills",
+            short: "Pilgrim town & scenic surroundings.",
+            image: "https://images.unsplash.com/photo-1526481280698-5bfa5b9a8f71?q=80&w=1600&auto=format&fit=crop&s=",
+            gallery: [
+              "https://images.unsplash.com/photo-1526481280698-5bfa5b9a8f71?q=80&w=1200&auto=format&fit=crop&s=",
+              "https://images.unsplash.com/photo-1523381215695-1c7bb1fc3a0c?q=80&w=1200&auto=format&fit=crop&s="
+            ],
+            description: "A blend of cultural significance and pleasant hill scenery; Tirupati Hills is both spiritual and scenic.",
+            best_time: "September — February",
+            things_to_do: ["Temple visit", "Local cuisine", "Hiking nearby trails"],
+            how_to_reach: "Well-connected by road and rail; nearest airport: Tirupati."
+          }
+        ]
+      },
+      "goa": {
+        name: "Goa",
+        hero: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1500&auto=format&fit=crop&s=",
+        spots: [
+          {
+            id: "baga",
+            name: "Baga Beach",
+            short: "Sun, surf & lively shacks.",
+            image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1600&auto=format&fit=crop&s=",
+            gallery: [
+              "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop&s=",
+              "https://images.unsplash.com/photo-1505577198275-3a8f9f1a8f6b?q=80&w=1200&auto=format&fit=crop&s="
+            ],
+            description: "Baga Beach is the lively coast with colorful beach shacks and energetic sunsets.",
+            best_time: "November — February",
+            things_to_do: ["Beach sports", "Sunset cruises", "Seafood shacks"],
+            how_to_reach: "Dabolim (GOI) airport is nearest; easy road transfer."
+          },
+          {
+            id: "dudhsagar",
+            name: "Dudhsagar Falls",
+            short: "Thunderous waterfall & jungle trails.",
+            image: "https://images.unsplash.com/photo-1509873921370-2a0a3d1d6e6b?q=80&w=1600&auto=format&fit=crop&s=",
+            gallery: [
+              "https://images.unsplash.com/photo-1509873921370-2a0a3d1d6e6b?q=80&w=1200&auto=format&fit=crop&s=",
+              "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop&s="
+            ],
+            description: "A dramatic waterfall in a green corridor — perfect for nature lovers and photographers.",
+            best_time: "October — March",
+            things_to_do: ["Trek to falls", "Jungle walk", "Photography"],
+            how_to_reach: "Accessible via day-trip tours from central Goa."
+          }
+        ]
+      }
+    };
+
+    /***** simple hash routing and render logic *****/
+    const app = document.getElementById('app');
+
+    function homeView(){
+      document.getElementById('nav-home').classList.add('active');
+      app.innerHTML = `
+        <section class="hero">
+          <div class="hero-card">
+            <h2>Discover South India — Aesthetic & Fictional Spots</h2>
+            <p>Explore state-wise destinations inspired by Karnataka, Kerala, Tamil Nadu, Andhra Pradesh and Goa. Click a state to view top spots, then open a spot to see full details and gallery.</p>
+            <div class="cta-row">
+              <button class="btn" onclick="location.hash='home'">Explore States</button>
+              <button class="btn secondary" onclick="scrollToGrid()">View Popular</button>
+            </div>
+          </div>
+          <div class="hero-side" aria-hidden="true"></div>
+        </section>
+
+        <section>
+          <h3 style="margin:6px 0 12px 0">States</h3>
+          <div class="grid" id="state-grid">
+            ${Object.keys(DATA).map(k => {
+              const s = DATA[k];
+              const img = s.spots && s.spots.length ? s.spots[0].image : s.hero;
+              return `<article class="card" role="button" onclick="location.hash='state=${k}'" aria-label="${s.name}">
+                <div class="img" style="background-image:url('${img}')"></div>
+                <div class="body">
+                  <div>
+                    <h3>${s.name}</h3>
+                    <p>${s.spots.length} featured spots</p>
+                  </div>
+                  <div style="margin-top:12px;color:#587">Explore →</div>
+                </div>
+              </article>`;
+            }).join('')}
+          </div>
+        </section>
+      `;
+    }
+
+    function stateView(stateKey){
+      const state = DATA[stateKey];
+      if(!state) { location.hash = 'home'; return; }
+      app.innerHTML = `
+        <div class="crumbs"><a href="#home">States</a> / <strong>${state.name}</strong></div>
+        <div class="detail-banner" style="background-image:url('${state.hero}')"></div>
+        <h2 style="margin-top:12px">${state.name} — Featured Spots</h2>
+        <div class="grid" style="margin-top:12px">
+          ${state.spots.map(spot => `
+            <article class="card" onclick="location.hash='state=${stateKey}&spot=${spot.id}'" role="button">
+              <div class="img" style="background-image:url('${spot.image}')"></div>
+              <div class="body">
+                <div>
+                  <h3>${spot.name}</h3>
+                  <p>${spot.short}</p>
+                </div>
+                <div style="margin-top:12px;color:#587">View Details →</div>
+              </div>
+            </article>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    function spotView(stateKey, spotId){
+      const state = DATA[stateKey];
+      if(!state){ location.hash='home'; return; }
+      const spot = state.spots.find(s=>s.id===spotId);
+      if(!spot){ location.hash='state='+stateKey; return; }
+
+      app.innerHTML = `
+        <div class="crumbs"><a href="#home">States</a> / <a href="#state=${stateKey}">${state.name}</a> / <strong>${spot.name}</strong></div>
+        <div class="detail-banner" style="background-image:url('${spot.image}')"></div>
+
+        <div class="detail-info">
+          <div class="detail-text">
+            <h2 style="margin-top:0">${spot.name}</h2>
+            <p style="color:#465">${spot.description}</p>
+
+            <div style="margin-top:14px">
+              <h4 style="margin:6px 0">Best Time to Visit</h4>
+              <p style="margin:2px 0 10px 0">${spot.best_time}</p>
+
+              <h4 style="margin:6px 0">Things to Do</h4>
+              <ul class="checks">
+                ${spot.things_to_do.map(it=>`<li>${it}</li>`).join('')}
+              </ul>
+
+              <h4 style="margin:10px 0 6px 0">How to Reach</h4>
+              <p style="margin:2px 0">${spot.how_to_reach}</p>
+            </div>
+
+            <div style="margin-top:14px">
+              <h4 style="margin:6px 0">Gallery</h4>
+              <div class="gallery">
+                ${spot.gallery.map(src=>`<img src="${src}" alt="${spot.name} image">`).join('')}
+              </div>
+            </div>
+          </div>
+
+          <aside class="meta-box">
+            <h4>Quick Info</h4>
+            <p><strong>State:</strong> ${state.name}</p>
+            <p><strong>Category:</strong> Scenic / Cultural</p>
+            <p style="margin-top:10px"><button class="btn" onclick="location.hash='state=${stateKey}'">Back to ${state.name}</button></p>
+          </aside>
+        </div>
+      `;
+    }
+
+    function renderFromHash(){
+      const hash = location.hash.slice(1);
+      if(!hash || hash==='home'){ homeView(); return; }
+
+      const params = new URLSearchParams(hash);
+      if(params.has('state') && params.has('spot')){
+        const state = params.get('state'), spot = params.get('spot');
+        spotView(state, spot);
+      } else if(params.has('state')){
+        const state = params.get('state');
+        stateView(state);
+      } else {
+        // fallback: check plain format like "state=karnataka&spot=coorg"
+        if(hash.startsWith('state=')){
+          const p = new URLSearchParams(hash);
+          const s = p.get('state');
+          const sp = p.get('spot');
+          if(sp) spotView(s,sp); else stateView(s);
+        } else {
+          homeView();
+        }
+      }
+    }
+
+    // small helper used by hero button
+    function scrollToGrid(){
+      const el = document.getElementById('state-grid');
+      if(el) el.scrollIntoView({behavior:'smooth'});
+    }
+
+    // init routing
+    window.addEventListener('hashchange', renderFromHash);
+    window.addEventListener('load', renderFromHash);
+
+    // accessibility: handle keyboard "Enter" for cards rendered as role=button
+    document.addEventListener('click', e=>{
+      // nothing special here yet; cards use onclick
+    });
+
+  </script>
+</body>
+</html>
