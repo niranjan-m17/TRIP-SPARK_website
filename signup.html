@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sign Up - Trip Spark</title>
+<style>
+  body { margin:0; font-family: Arial, sans-serif; display:flex; height:100vh; }
+  .left-panel {
+    flex:1; background:linear-gradient(135deg, #FF9933, #FF7700);
+    display:flex; justify-content:center; align-items:center; color:white; flex-direction:column; text-align:center;
+  }
+  .left-panel h1 { font-size:48px; margin:0; }
+  .left-panel p { font-size:24px; margin-top:10px; }
+  .right-panel {
+    flex:1; display:flex; justify-content:center; align-items:center; background:#fff;
+  }
+  .signup-box { width:80%; max-width:300px; }
+  h2 { margin-bottom:5px; }
+  p { margin-top:0; color:#555; }
+  .field { margin:12px 0; position:relative; }
+  input[type="text"], input[type="email"], input[type="password"] {
+    width:100%; padding:10px; font-size:14px; border:none; border-bottom:2px solid #ccc; outline:none;
+  }
+  input:focus { border-color:#FF7700; }
+  .toggle-password {
+    position:absolute; right:10px; top:50%; transform:translateY(-50%); cursor:pointer; font-size:14px; color:#999;
+  }
+  small.rules { color:#666; display:block; margin-top:4px; font-size:12px; }
+  button.submit-btn {
+    background:linear-gradient(#FF9933, #FF7700); border:none; padding:10px; width:100%; color:white; font-size:14px; border-radius:20px; cursor:pointer; margin-top:10px;
+    box-shadow:0 4px #cc5f00;
+    transition:all 0.1s ease-in-out;
+  }
+  button.submit-btn:active {
+    box-shadow:0 2px #cc5f00;
+    transform:translateY(2px);
+  }
+  a.back-btn { display:block; text-align:center; margin-top:10px; text-decoration:none; color:#FF7700; font-weight:bold; }
+</style>
+</head>
+<body>
+  <div class="left-panel">
+    <h1>WELCOME</h1>
+    <p>to TRIP SPARK</p>
+  </div>
+  <div class="right-panel">
+    <div class="signup-box">
+      <h2>Sign Up</h2>
+      <p>Create your account</p>
+      <button class="submit-btn" style="margin-bottom:15px; background:#DB4437" onclick="alert('Google Sign Up')">Sign Up with Google</button>
+      <div class="field">
+        <input type="text" placeholder="Name" required />
+      </div>
+      <div class="field">
+        <input type="email" placeholder="Email" required />
+      </div>
+      <div class="field">
+        <input type="password" id="pwd1" placeholder="Password" required />
+        <span class="toggle-password" onclick="togglePassword('pwd1', this)">Show</span>
+        <small class="rules">Use 8+ characters with a mix of letters & numbers.</small>
+      </div>
+      <div class="field">
+        <input type="password" id="pwd2" placeholder="Re-enter Password" required />
+        <span class="toggle-password" onclick="togglePassword('pwd2', this)">Show</span>
+      </div>
+      <button class="submit-btn" onclick="alert('Error: Unable to sign up. Please try again.')">Sign Up</button>
+      <a href="./home.html" class="back-btn">← Back</a>
+    </div>
+  </div>
+<script>
+  function togglePassword(id, el) {
+    const pwd = document.getElementById(id);
+    if (pwd.type === 'password') {
+      pwd.type = 'text';
+      el.textContent = 'Hide';
+    } else {
+      pwd.type = 'password';
+      el.textContent = 'Show';
+    }
+  }
+</script>
+</body>
+</html>

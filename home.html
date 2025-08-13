@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trip Spark</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-color: #fff;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+    header {
+        background: linear-gradient(45deg, #FF9933, #FF7700, #FFB366);
+        padding: 15px;
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+        position: relative;
+        animation: gradientShift 5s ease infinite;
+        background-size: 300% 300%;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+    @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    .header-buttons {
+        position: absolute;
+        right: 20px;
+        top: 15px;
+    }
+    .header-buttons button {
+        margin-left: 10px;
+        padding: 8px 16px;
+        background-color: white;
+        color: #FF7700;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        border-radius: 20px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .header-buttons button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    .caption {
+        margin-top: 20px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #FF7700;
+    }
+    .search-bar {
+        margin: 15px auto;
+        max-width: 800px;
+        display: flex;
+        align-items: center;
+    }
+    .search-bar input {
+        flex: 1;
+        padding: 14px;
+        font-size: 18px;
+        border: 2px solid #FF7700;
+        border-radius: 25px 0 0 25px;
+        width: 40ch;
+    }
+    .search-bar button {
+        background-color: #FF7700;
+        border: none;
+        padding: 14px 24px;
+        cursor: pointer;
+        border-radius: 0 25px 25px 0;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .images-container {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: nowrap;
+    }
+    .images-container img {
+        width: 120px;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        transition: transform 0.3s ease;
+        cursor: pointer;
+    }
+    .images-container img:hover {
+        transform: scale(1.05);
+    }
+    footer {
+        font-size: 12px;
+        color: #777;
+        background: #f1f1f1;
+        padding: 10px 0;
+        margin-top: auto;
+        width: 100%;
+    }
+    .form-container {
+        max-width: 400px;
+        margin: 40px auto;
+        text-align: left;
+    }
+    .form-container input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .form-container button {
+        width: 100%;
+        padding: 10px;
+        background-color: #FF7700;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    .form-container button:hover {
+        background-color: #e56700;
+    }
+</style>
+</head>
+<body>
+<header>
+    Welcome to TRIP SPARK
+    <div class="header-buttons">
+        <button onclick="window.location.href='login.html'">Login</button>
+        <button onclick="window.location.href='signup.html'">Sign Up</button>
+    </div>
+</header>
+
+<div class="caption">Select Your Destination To Travel!</div>
+<div class="search-bar">
+    <input type="text" placeholder="Search your destination...">
+    <button onclick="window.location.href='search.html'">Search</button>
+</div>
+
+<div class="images-container">
+    <img src="https://i.postimg.cc/rF7jTHsc/Telangana.png" alt="Telangana" onclick="window.location.href='telangana.html'">
+    <img src="https://i.postimg.cc/rwcjnPpp/Andhra-Pradesh.png" alt="Andhra Pradesh" onclick="window.location.href='andhra.html'">
+    <img src="https://i.postimg.cc/QCTmwL5F/Goa.png" alt="Goa" onclick="window.location.href='goa.html'">
+    <img src="https://i.postimg.cc/26JT0jqp/Karnataka.png" alt="Karnataka" onclick="window.location.href='karnataka.html'">
+    <img src="https://i.postimg.cc/pTyqQ5LY/Kerala.png" alt="Kerala" onclick="window.location.href='kerala.html'">
+    <img src="https://i.postimg.cc/HL6679dk/Tamil-Nadu.png" alt="Tamil Nadu" onclick="window.location.href='tamilnadu.html'">
+</div>
+
+<footer>
+    © 2025 Trip Spark | Created by NIRANJAN M
+</footer>
+</body>
+</html>
